@@ -72,8 +72,9 @@ internal class Human    // создан класс человек (очень п
         }
     }
 
-    private void ToDrink (Drink anyDrink, double volume){ // 
-
+    private void ToDrink (Drink anyDrink){ // 
+        double alcohol = anyDrink.Volume * (anyDrink.Strength/100);
+        
     }
 
     // Думаю, я смог донести основные принципы. Параметры могут зависить друг от друга на любых условиях.
