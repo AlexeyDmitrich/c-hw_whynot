@@ -60,7 +60,22 @@ internal class Human    // создан класс человек (очень п
     }
 
     //кроме свойств объекты могут иметь свои функции.
-    private void 
+    private void Say (string text){     // у человека при потере трезвости нарушается четкость и последовательность речи
+        if (this.sobriety > 70){
+            Console.WriteLine(text);
+        } else if (this.sobriety > 40){
+            text = text.Substring(1, text.Length - 2);   // метод .Substring может обрезать строки
+            Console.WriteLine($"Э{text} ну...");
+        } else {
+            string text1 = text.Substring(4, text.Length - 2);
+            string text2 = text.Substring(0, text.Length-3);
+            Console.WriteLine($"Э{text1} это... {text2}мъ");
+        }
+    }
+
+    private void ToDrink (Drink anyDrink, double volume){ // 
+
+    }
 
     // Думаю, я смог донести основные принципы. Параметры могут зависить друг от друга на любых условиях.
     // всё, что происходит внутри этого класса - магия для всех остальных. Особенно, при модификаторе доступа private
