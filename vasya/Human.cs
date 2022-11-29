@@ -65,16 +65,40 @@ internal class Human    // создан класс человек (очень п
         } else if (this.sobriety > 40){
             text = text.Substring(1, text.Length - 2);   // метод .Substring может обрезать строки
             Console.WriteLine($"Э{text} ну...");
-        } else {
+        } else if (this.sobriety > 20){
             string text1 = text.Substring(4, text.Length - 2);
             string text2 = text.Substring(0, text.Length-3);
             Console.WriteLine($"Э{text1} это... {text2}мъ");
+        } else {
+            Console.WriteLine(".......");
         }
     }
 
     private void ToDrink (Drink anyDrink){ // 
         double alcohol = anyDrink.Volume * (anyDrink.Strength/100);
-        
+        double promille = alcohol/this.weight*0.6;
+        int intoxication;
+        if (promille < 0.5){    // не оказывает влияния
+            intoxication = 25;
+        } else if (promille < 1.5){    //лёгкая степень
+            intoxication = 45;
+        } else if (promille < 2){    // средняя степень
+            intoxication = 60;
+        } else if (promille < 3){   // сильная степень
+            intoxication = 70;
+        } else if (promille < 5){   // тяжелое отравление
+            intoxication = 85;
+        } else {    // летальная доза
+            intoxication = 90;
+        }
+        this.sobriety -= intoxication;
+        if (intoxication < 50){
+            this.health -= (intoxication/4);
+        } else if (intoxication < 70){
+            this.health -= (intoxication);
+        } else {
+            this.health -= (intoxication+2);
+        }
     }
 
     // Думаю, я смог донести основные принципы. Параметры могут зависить друг от друга на любых условиях.
