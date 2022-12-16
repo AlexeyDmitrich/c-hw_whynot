@@ -59,22 +59,22 @@ internal class Human    // создан класс человек (очень п
     }
 
     //кроме свойств объекты могут иметь свои функции.
-    private void Say (string text){     // у человека при потере трезвости нарушается четкость и последовательность речи
+    public void Say (string text){     // у человека при потере трезвости нарушается четкость и последовательность речи
         if (this.sobriety > 70){
             Console.WriteLine(text);
         } else if (this.sobriety > 40){
             text = text.Substring(1, text.Length - 2);   // метод .Substring может обрезать строки
-            Console.WriteLine($"Э{text} ну...");
+            Console.WriteLine($"Э... {text}.. ну...");
         } else if (this.sobriety > 20){
-            string text1 = text.Substring(4, text.Length - 2);
-            string text2 = text.Substring(0, text.Length-3);
-            Console.WriteLine($"Э{text1} это... {text2}мъ");
+            string text1 = text.Substring(0, text.Length - 4);
+            string text2 = text.Substring(1, text.Length - 3);
+            Console.WriteLine($"Э.. {text1} это... {text2}мъ");
         } else {
             Console.WriteLine(".......");
         }
     }
 
-    private void ToDrink (Drink anyDrink){ // 
+    public void ToDrink (Drink anyDrink){ // 
         double alcohol = anyDrink.Volume * (anyDrink.Strength/100);
         double promille = alcohol/this.weight*0.6;
         int intoxication;
